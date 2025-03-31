@@ -1,5 +1,6 @@
 package com.blai30.mixin;
 
+import com.blai30.CustomCraftingScreenHandlerFactory;
 import net.minecraft.item.Items;
 import net.minecraft.screen.*;
 import net.minecraft.screen.slot.SlotActionType;
@@ -26,9 +27,7 @@ public class ScreenHandlerMixin {
 
                 if (stack.getItem() == Items.CRAFTING_TABLE) {
                     Objects.requireNonNull(player.getServer()).execute(() -> {
-                        player.openHandledScreen(new SimpleNamedScreenHandlerFactory((syncId, playerInventory, playerEntity) -> {
-                            return new CraftingScreenHandler(syncId, playerInventory, ScreenHandlerContext.EMPTY);
-                        }, Text.translatable("container.crafting")));
+                        player.openHandledScreen(new CustomCraftingScreenHandlerFactory(Text.translatable("container.crafting")));
                     });
                 }
             }
