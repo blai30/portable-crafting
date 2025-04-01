@@ -26,10 +26,10 @@ public class ScreenHandlerMixin {
                 var stack = player.currentScreenHandler.getSlot(slotId).getStack();
 
                 if (stack.getItem() == Items.CRAFTING_TABLE) {
+                    ci.cancel();
                     Objects.requireNonNull(player.getServer()).execute(() -> player.openHandledScreen(new CustomCraftingScreenHandlerFactory(Text.translatable("container.crafting"))));
                 }
             }
-            ci.cancel();
         }
     }
 }

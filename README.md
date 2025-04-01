@@ -1,4 +1,6 @@
-# Portable Workbench
+# Portable Crafting
+
+Allows players to open Crafting Table UI by right-clicking on a crafting table item from their inventory. Minecraft mod for Fabric Server.
 
 ## Setup
 
