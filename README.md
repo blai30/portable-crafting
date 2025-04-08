@@ -2,6 +2,8 @@
 
 Allows players to open Crafting Table UI by right-clicking on a crafting table item from their inventory. Minecraft mod for Fabric Server.
 
+https://github.com/user-attachments/assets/2606295d-ace1-4475-b90e-0cbaee2b0c2b
+
 ![image](https://github.com/user-attachments/assets/abf419f2-af04-4847-9b9e-14ff13a9dc53)
 
 ## Setup
