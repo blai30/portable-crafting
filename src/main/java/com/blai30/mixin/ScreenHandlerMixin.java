@@ -5,6 +5,7 @@ import net.minecraft.item.Items;
 import net.minecraft.screen.*;
 import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.stat.Stats;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -27,7 +28,10 @@ public class ScreenHandlerMixin {
 
                 if (stack.getItem() == Items.CRAFTING_TABLE) {
                     ci.cancel();
-                    Objects.requireNonNull(player.getServer()).execute(() -> player.openHandledScreen(new CustomCraftingScreenHandlerFactory(Text.translatable("container.crafting"))));
+                    Objects.requireNonNull(player.getServer()).execute(() -> {
+                        player.openHandledScreen(new CustomCraftingScreenHandlerFactory(Text.translatable("container.crafting")));
+                        player.incrementStat(Stats.INTERACT_WITH_CRAFTING_TABLE);
+                    });
                 }
             }
         }
