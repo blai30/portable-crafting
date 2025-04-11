@@ -1,7 +1,6 @@
 package com.blai30.mixin;
 
 import com.blai30.CustomCraftingScreenHandlerFactory;
-import net.minecraft.item.Items;
 import net.minecraft.screen.*;
 import net.minecraft.screen.slot.SlotActionType;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -21,18 +20,20 @@ public class ScreenHandlerMixin {
         ScreenHandler handler = (ScreenHandler) (Object) this;
         boolean isPlayerInventory = handler instanceof PlayerScreenHandler;
         boolean isSurvival = !player.getAbilities().creativeMode;
+        boolean isRightClick = button == 1;
 
-        if (isPlayerInventory && isSurvival && player instanceof ServerPlayerEntity && button == 1) {
-            if (actionType == SlotActionType.PICKUP && player.currentScreenHandler.getSlot(slotId).hasStack()) {
-                var stack = player.currentScreenHandler.getSlot(slotId).getStack();
+        if (isPlayerInventory && isSurvival && isRightClick && player instanceof ServerPlayerEntity) {
+//            if (actionType == SlotActionType.PICKUP && player.currentScreenHandler.getSlot(slotId).hasStack()) {
+            if (actionType == SlotActionType.PICKUP && slotId == 0 && !player.currentScreenHandler.getSlot(slotId).hasStack()) {
+//                var stack = player.currentScreenHandler.getSlot(slotId).getStack();
 
-                if (stack.getItem() == Items.CRAFTING_TABLE) {
+//                if (stack.getItem() == Items.CRAFTING_TABLE) {
                     ci.cancel();
                     Objects.requireNonNull(player.getServer()).execute(() -> {
                         player.openHandledScreen(new CustomCraftingScreenHandlerFactory(Text.translatable("container.crafting")));
                         player.incrementStat(Stats.INTERACT_WITH_CRAFTING_TABLE);
                     });
-                }
+//                }
             }
         }
     }

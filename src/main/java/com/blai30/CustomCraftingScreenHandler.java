@@ -13,7 +13,8 @@ public class CustomCraftingScreenHandler extends CraftingScreenHandler {
 
     @Override
     public boolean canUse(PlayerEntity player) {
-        return true; // Allow all players to use this container
+        // Allow all players to use this container
+        return true;
     }
 
     @Override
