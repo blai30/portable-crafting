@@ -3,7 +3,7 @@
   "id": "portablecrafting",
   "version": "${version}",
   "name": "Portable Crafting",
-  "description": "Allows players to open Crafting Table UI by right-clicking on a crafting table item from their inventory.",
+  "description": "Allows players to open Crafting Table UI by right-clicking on the crafting result slot from the Player inventory.",
   "authors": [
     "Brian Lai"
   ],
