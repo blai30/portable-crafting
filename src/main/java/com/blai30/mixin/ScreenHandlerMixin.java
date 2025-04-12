@@ -30,6 +30,7 @@ public class ScreenHandlerMixin {
 //                if (stack.getItem() == Items.CRAFTING_TABLE) {
                     ci.cancel();
                     Objects.requireNonNull(player.getServer()).execute(() -> {
+                        handler.onClosed(player);
                         player.openHandledScreen(new CustomCraftingScreenHandlerFactory(Text.translatable("container.crafting")));
                         player.incrementStat(Stats.INTERACT_WITH_CRAFTING_TABLE);
                     });
